@@ -1,3 +1,9 @@
 spring:
   application:
     name: LexSnap
+  thymeleaf:
+    cache: false
+
+libretranslate:
+  url: http://localhost:5000/translate
+  api-key: ""
