@@ -13,16 +13,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class TranslateController {
     private final TranslateService translateService;
 
-    @GetMapping("/")
-    public String index() {
+    @GetMapping
+    public String index(Model model) {
+        var words = translateService.getWords();
+        model.addAttribute("words", words);
         return "index";
     }
 
-    @PostMapping("/")
+    @PostMapping
     public String translate(@RequestParam String word, Model model) {
-        var result = translateService.translate(word, "en", "ru");
+        var result = translateService.translate(word);
         model.addAttribute("word", word);
         model.addAttribute("result", result);
+
+        var words = translateService.getWords();
+        model.addAttribute("words", words);
+
         return "index";
     }
 }

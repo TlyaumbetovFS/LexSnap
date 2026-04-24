@@ -3,3 +3,8 @@
     <button type="submit">Translate</button>
     <p th:text="${result}"></p>
 </form>
+
+<div th:each="word : ${words}">
+    <span th:text="${word.original}"></span>
+    <span th:text="${word.translation}"></span>
+</div>
